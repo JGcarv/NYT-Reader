@@ -15,6 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.makeKeyAndVisible()
+        
+        let feedController = FeedController(collectionViewLayout: UICollectionViewFlowLayout())
+        let navigationController = UINavigationController(rootViewController: feedController)
+        
+        window?.rootViewController = navigationController
+        
+        UINavigationBar.appearance().barTintColor =  UIColor.darkGrayColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "Times New Roman", size: 21)!]
+        
+        
+        
+        application.statusBarStyle = .LightContent
+        
+        
         // Override point for customization after application launch.
         return true
     }

@@ -8,18 +8,56 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
+    let cellID = "newsCell"
+    var newsList: [NewsArticle] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        navigationItem.title = "New York Times Reader"
+        //print(newsList)
+        
+        collectionView?.registerClass(CellNews.self, forCellWithReuseIdentifier: cellID)
+        collectionView?.backgroundColor = UIColor.whiteColor()
+        
+        JSONHelper.fetchArticles { (newsList) in
+            self.newsList = newsList
+            self.collectionView?.reloadData()
+            
+        }
+        
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func collectionView(collectionView: UICollectionView,numberOfItemsInSection section: Int) -> Int{
+        return newsList.count
+    }
+    
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! CellNews
+        
+        cell.news = newsList[indexPath.item]
+        
+        
+        return cell
     }
 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(view.frame.width - 10 , 100)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return CGFloat(8)
+    }
+    
 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(5, 5, 0, 5)
+    }
+    
 }
 
