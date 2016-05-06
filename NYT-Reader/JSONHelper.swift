@@ -48,6 +48,9 @@ struct JSONHelper {
                     if let url = dict["url"] as? String {
                         article.url = url
                     }
+                    if let byline = dict["byline"] as? String {
+                        article.byline = byline
+                    }
                     newsList.append(article)
                     
                 }

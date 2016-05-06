@@ -34,6 +34,28 @@ extension UIColor {
     static func palettePurple() -> UIColor{
         return UIColor.rgb(77, green: 103, blue: 153)
     }
+    
+    static func paletteLightGreen() -> UIColor{
+        return UIColor.rgb(101, green: 255, blue: 173)
+    }
+    
+    static func paletteGreen() -> UIColor{
+        return UIColor.rgb(80, green: 204, blue: 103)
+    }
+    
+    static func paletteLightBrown() -> UIColor{
+        return UIColor.rgb(204, green: 142, blue: 73)
+    }
+    
+    static func paletteSalmon() -> UIColor{
+        return UIColor.rgb(255, green: 157, blue: 126)
+    }
+    
+    static func paletteGrey() -> UIColor{
+        return UIColor.rgb(153, green: 147, blue: 136)
+    }
+    
+    
 }
 
 extension UIView {

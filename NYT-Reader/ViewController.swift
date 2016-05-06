@@ -21,6 +21,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.registerClass(CellNews.self, forCellWithReuseIdentifier: cellID)
         collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.showsVerticalScrollIndicator = false
         
         JSONHelper.fetchArticles { (newsList) in
             self.newsList = newsList
@@ -41,8 +42,6 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellID, forIndexPath: indexPath) as! CellNews
         
         cell.news = newsList[indexPath.item]
-        
-        
         return cell
     }
 
@@ -56,7 +55,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(5, 5, 0, 5)
+        return UIEdgeInsetsMake(5, 5, 5, 5)
     }
     
 }
